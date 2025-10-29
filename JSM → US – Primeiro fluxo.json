@@ -1,0 +1,256 @@
+{
+  "name": "JSM → US – Primeiro fluxo",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "jira:issue_created"
+        ],
+        "additionalFields": {
+          "filter": "project = TKT",
+          "includeFields": []
+        }
+      },
+      "type": "n8n-nodes-base.jiraTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "03b8145f-cbab-4bbb-ae98-6f4dddd6ee94",
+      "name": "Jira Trigger",
+      "webhookId": "4c4596d0-2aa8-4bff-a0cf-2ce0d6eb1058",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "r1aPBQkrVXpzK10z",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=**ORIGEM DO TICKET:**\n- Título do Ticket: \"{{ $json.changelog.items[4].toString }}\"\n- Descrição Completa: \"{{ $json.changelog.items[0].toString }}\"\n- Cliente/Solicitante: \"{{ $json.issue.fields.customfield_10002[0].name }}\"\n- Issue Original: \"{{ $json.issue.key }}\"\n\n**SUA TAREFA:**\nTransforme a solicitação acima em uma User Story de altíssima qualidade, usando **exclusivamente** a estrutura. Preencha cada seção de forma clara, objetiva e completa. Colocar em negrito, exemplo Título (em negrito), a seguir descrição normal; Contexto (negrito), a seguir descrição normal e por assim vai\n\n**ESTRUTURA DE SAÍDA EXATA:**\nTítulo\n[Um título claro e conciso para a US, baseado no assunto principal]\n\nContexto\n[Explique o cenário, a dor do usuário ou o problema de negócio que motivou este ticket. Baseie-se fortemente na descrição fornecida. Seja específico.]\n\nUser Story\n**Como** [tipo de usuário/cliente],\n**quero** [realizar uma ação específica ou que uma funcionalidade se comporte de uma maneira],\n**para que** [eu possa alcanhar um benefício ou resolver um problema claro].\n\nCritérios de Aceite (Mínimo de 3)\n- [ ] [Condição verificável 1]\n- [ ] [Condição verificável 2]\n- [ ] [Condição verificável 3]\n\nDefinição de Pronto (DoD)\n- [ ] [Condição técnica 1, ex.: \"Código revisado e aprovado em PR\"]\n- [ ] [Condição técnica 2, ex.: \"Testes de integração passando\"]\n- [ ] [Condição de qualidade 3, ex.: \"Documentação atualizada no Confluence\"]\n\n**REGRA DE NEGÓCIO CRÍTICA:**\nAnalise o Cliente/Solicitante: \"{{ $json.issue.fields.customfield_10002[0].name }}\" para identificar a qual produto/modulo/empresa este ticket se refere. Com base nisso, **VINCULE** esta User Story ao Épico correto no Jira, usando **exatamente** um dos nomes de épico listados abaixo:\n- Se identificar os termos **\"Ziranlog\"**, **\"Ziran\"**: Associe ao épico **`AT-1152`**.\n- Se identificar os termos **\"Tranziran\"**: Associe ao épico **`AT-866`**.\n- Se identificar os termos **\"Guarujá\"**, **\"Guaruja\"**: Associe ao épico **`AT-867`**.\n- Caso nenhum termo seja encontrado, associe ao épico **`AT-1958`**.\n\n**SAÍDA EXIGIDA:**\nRetorne **exclusivamente** um objeto JSON com estas quatro chaves:\n{\n  \"title\": \"Título extraído da US\",\n  \"description\": \"Todo o texto markdown da US (completo)\",\n  \"epicName\": \"Nome do épico decidido\"\n  \"issueName\": \"{{ $json.issue.key }}\"\n}\n\nNão inclua explicações, comentários ou marcadores como ```json. A resposta deve ser apenas o JSON válido."
+            },
+            {
+              "content": "Você é um analista de produto sênior especializado em transformar solicitações de clientes do Jira Service Management (JSM) em User Stories perfeitas para desenvolvedores, seguindo rigidamente o formato INVEST e os critérios abaixo.",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        160,
+        0
+      ],
+      "id": "1df85023-f348-4d51-abe1-14f97019bc12",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "u9UYz7xTQjyoq0YJ",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10000",
+          "mode": "list",
+          "cachedResultName": "Control"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "=10001",
+          "mode": "id",
+          "__regex": "^([0-9]{1,})"
+        },
+        "summary": "={{ $json.message.content.title }}",
+        "additionalFields": {
+          "description": "={{ $json.message.content.description }}"
+        }
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "ae2ac65f-bde1-4450-9a10-5accbb6715c9",
+      "name": "Create an issue",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "r1aPBQkrVXpzK10z",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://recintos.atlassian.net/rest/api/3/issueLink",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"type\": { \"name\": \"Relates\" },\n  \"inwardIssue\": {\n    \"key\": \"{{ $node['Jira Trigger'].json.issue.key }}\"\n  },\n  \"outwardIssue\": {\n    \"key\": \"{{ $node['Create an issue'].json.key }}\"\n  }\n}",
+        "options": {
+          "allowUnauthorizedCerts": false,
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        640,
+        0
+      ],
+      "id": "b5d35d56-eb7c-40d1-a985-7166c313bcc2",
+      "name": "Vincular Issue",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "r1aPBQkrVXpzK10z",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://recintos.atlassian.net/rest/agile/1.0/sprint/383/issue",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"issues\": [\n    \"{{ $node['Create an issue'].json.key }}\"\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        848,
+        0
+      ],
+      "id": "e98105b0-a067-48b0-992f-6216ea3f48b9",
+      "name": "Inserir na Sprint Atend.",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "r1aPBQkrVXpzK10z",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://recintos.atlassian.net/rest/agile/1.0/epic/21040/issue",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"issues\": [\n    \"{{ $node['Create an issue'].json.key }}\"\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1056,
+        0
+      ],
+      "id": "e9a34d1c-fd0d-4457-9cda-b4594fa08da1",
+      "name": "Incluir Épico",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "r1aPBQkrVXpzK10z",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Jira Trigger": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Create an issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an issue": {
+      "main": [
+        [
+          {
+            "node": "Vincular Issue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vincular Issue": {
+      "main": [
+        [
+          {
+            "node": "Inserir na Sprint Atend.",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inserir na Sprint Atend.": {
+      "main": [
+        [
+          {
+            "node": "Incluir Épico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fdf2cb5f-2345-4a96-bb2f-ebe1eaa01ca0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9684988b4316ea6a5964c46f5d4a970840f516d05000cc820d5cc80f3758dc9f"
+  },
+  "id": "jeYznQBfUMvjC500",
+  "tags": []
+}

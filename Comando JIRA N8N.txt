@@ -1,0 +1,52 @@
+**ORIGEM DO TICKET:**
+- Título do Ticket: "{{ $json.changelog.items[4].toString }}"
+- Descrição Completa: "{{ $json.changelog.items[0].toString }}"
+- Cliente/Solicitante: "{{ $json.issue.fields.customfield_10002[0].name }}"
+- Issue Original: "{{ $json.issue.key }}"
+
+**SUA TAREFA:**
+1. Transforme a solicitação acima em uma User Story de altíssima qualidade, usando **exclusivamente** a estrutura de markdown abaixo. Preencha cada seção de forma clara, objetiva e completa.
+2. Extraia o **título** da US (a primeira linha após "### Título").
+3. Analise o conteúdo para decidir o **épico correto** com base nos termos mencionados.
+
+
+**ESTRUTURA DA USER STORY (markdown):**
+
+### Título
+[Um título claro e conciso para a US, baseado no assunto principal]
+
+### Contexto
+[Inclua quem criou a solicitação no contexto: {{ $json.changelog.items[2].toString }}, Cite o módulo em questão: {{ $json.issue.fields.customfield_10010.requestType.name }} , cite de qual grupo criou esse pedido: {{ $json.issue.fields.customfield_10002[0].name }} e Explique o cenário, a dor do usuário ou o problema de negócio que motivou este ticket. Baseie-se fortemente na descrição fornecida. Seja específico.]
+
+### User Story
+**Como** [tipo de usuário/cliente],
+**quero** [realizar uma ação específica ou que uma funcionalidade se comporte de uma maneira],
+**para que** [eu possa alcanhar um benefício ou resolver um problema claro].
+
+### Critérios de Aceite (Mínimo de 3)
+- [ ] [Condição verificável 1]
+- [ ] [Condição verificável 2]
+- [ ] [Condição verificável 3]
+
+### Definição de Pronto (DoD)
+- [ ] [Condição técnica 1, ex.: "Código revisado e aprovado em PR"]
+- [ ] [Condição técnica 2, ex.: "Testes de integração passando"]
+- [ ] [Condição de qualidade 3, ex.: "Documentação atualizada no Confluence"]
+
+**REGRA DE NEGÓCIO CRÍTICA:**
+Analise o Cliente/Solicitante: "{{ $json.issue.fields.customfield_10002[0].name }}" para identificar a qual produto/modulo/empresa este ticket se refere. Com base nisso, **VINCULE** esta User Story ao Épico correto no Jira, usando **exatamente** um dos nomes de épico listados abaixo:
+- Se identificar os termos **"Ziranlog"**, **"Ziran"**: Associe ao épico **`AT-1152`**.
+- Se identificar os termos **"Tranziran"**: Associe ao épico **`AT-866`**.
+- Se identificar os termos **"Guarujá"**, **"Guaruja"**: Associe ao épico **`AT-867`**.
+- Caso nenhum termo seja encontrado, associe ao épico **`AT-1958`**.
+
+**SAÍDA EXIGIDA:**
+Retorne **exclusivamente** um objeto JSON com estas quatro chaves:
+{
+  "title": "Título extraído da US",
+  "description": "Todo o texto markdown da US (completo)",
+  "epicName": "Nome do épico decidido"
+  "issueName": "{{ $json.issue.key }}"
+}
+
+Não inclua explicações, comentários ou marcadores como ```json. A resposta deve ser apenas o JSON válido.

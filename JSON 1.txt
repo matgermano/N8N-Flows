@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "authentication": "predefinedCredentialType",
+    "nodeCredentialType": "jiraSoftwareCloudApi",
+    "options": {},
+    "url": "https://recintos.atlassian.net/rest/api/3/issueLink",
+    "method": "POST",
+    "sendBody": true,
+    "jsonBody": true,
+    "bodyParametersJson": "{\n  \"type\": { \"name\": \"Relates\" },\n  \"inwardIssue\": {\n    \"key\": \"{{ $json.choices[0].message.content.issueName && $json.choices[0].message.content.issueName.includes('/') ? $json.choices[0].message.content.issueName.split('/').pop() : $json.choices[0].message.content.issueName }}\"\n  },\n  \"outwardIssue\": {\n    \"key\": \"{{ $('Create an Issue').item.json.key }}\"\n  }\n}"
+  },
+  "name": "HTTP - Create Issue Link",
+  "type": "n8n-nodes-base.httpRequest",
+  "typeVersion": 3
+}

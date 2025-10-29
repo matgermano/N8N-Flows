@@ -1,0 +1,338 @@
+Input Jira
+
+[
+  {
+    "timestamp": 1761236263443,
+    "webhookEvent": "jira:issue_created",
+    "issue_event_type_name": "issue_created",
+    "user": {
+      "self": "https://recintos.atlassian.net/rest/api/2/user?accountId=712020%3A94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+      "accountId": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+      "avatarUrls": {
+        "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/48",
+        "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/24",
+        "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/16",
+        "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/32"
+      },
+      "displayName": "Matheus Germano De Souza",
+      "active": true,
+      "timeZone": "America/Argentina/Buenos_Aires",
+      "accountType": "atlassian"
+    },
+    "issue": {
+      "id": "21038",
+      "self": "https://recintos.atlassian.net/rest/api/2/21038",
+      "key": "TKT-64",
+      "fields": {
+        "statuscategorychangedate": "2025-10-23T13:17:43.525-0300",
+        "fixVersions": [],
+        "customfield_10199": null,
+        "statusCategory": {
+          "self": "https://recintos.atlassian.net/rest/api/2/statuscategory/2",
+          "id": 2,
+          "key": "new",
+          "colorName": "blue-gray",
+          "name": "New"
+        },
+        "resolution": null,
+        "lastViewed": null,
+        "customfield_10060": null,
+        "customfield_10061": null,
+        "customfield_10062": null,
+        "customfield_10063": null,
+        "customfield_10064": null,
+        "customfield_10065": null,
+        "customfield_10066": null,
+        "priority": {
+          "self": "https://recintos.atlassian.net/rest/api/2/priority/3",
+          "iconUrl": "https://recintos.atlassian.net/images/icons/priorities/medium_new.svg",
+          "name": "Medium",
+          "id": "3"
+        },
+        "customfield_10100": null,
+        "customfield_10067": null,
+        "labels": [],
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "issuelinks": [],
+        "assignee": null,
+        "status": {
+          "self": "https://recintos.atlassian.net/rest/api/2/status/1",
+          "description": "Entrou na fila para ser analisado",
+          "iconUrl": "https://recintos.atlassian.net/images/icons/statuses/open.png",
+          "name": "Aberto para Análise",
+          "id": "1",
+          "statusCategory": {
+            "self": "https://recintos.atlassian.net/rest/api/2/statuscategory/2",
+            "id": 2,
+            "key": "new",
+            "colorName": "blue-gray",
+            "name": "New"
+          }
+        },
+        "components": [],
+        "customfield_10050": null,
+        "customfield_10051": null,
+        "customfield_10052": null,
+        "customfield_10053": null,
+        "customfield_10054": null,
+        "customfield_10055": null,
+        "customfield_10056": null,
+        "customfield_10057": null,
+        "customfield_10058": null,
+        "customfield_10059": null,
+        "customfield_10049": null,
+        "aggregatetimeestimate": null,
+        "creator": {
+          "self": "https://recintos.atlassian.net/rest/api/2/user?accountId=712020%3A94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+          "accountId": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/32"
+          },
+          "displayName": "Matheus Germano De Souza",
+          "active": true,
+          "timeZone": "America/Argentina/Buenos_Aires",
+          "accountType": "atlassian"
+        },
+        "subtasks": [],
+        "customfield_10040": null,
+        "customfield_10041": null,
+        "customfield_10042": null,
+        "customfield_10043": [],
+        "reporter": {
+          "self": "https://recintos.atlassian.net/rest/api/2/user?accountId=712020%3A94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+          "accountId": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+          "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0/015f12f3-2b3f-4172-8a49-d726a58820c2/32"
+          },
+          "displayName": "Matheus Germano De Souza",
+          "active": true,
+          "timeZone": "America/Argentina/Buenos_Aires",
+          "accountType": "atlassian"
+        },
+        "aggregateprogress": {
+          "progress": 0,
+          "total": 0
+        },
+        "customfield_10166": null,
+        "customfield_10046": null,
+        "customfield_10167": null,
+        "customfield_10047": null,
+        "customfield_10048": null,
+        "customfield_10038": null,
+        "customfield_10039": null,
+        "progress": {
+          "progress": 0,
+          "total": 0
+        },
+        "votes": {
+          "self": "https://recintos.atlassian.net/rest/api/2/issue/TKT-64/votes",
+          "votes": 0,
+          "hasVoted": false
+        },
+        "issuetype": {
+          "self": "https://recintos.atlassian.net/rest/api/2/issuetype/10022",
+          "id": "10022",
+          "description": "For system outages or incidents. Created by Jira Service Management.",
+          "iconUrl": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10559?size=medium",
+          "name": "[System] Incident",
+          "subtask": false,
+          "avatarId": 10559,
+          "hierarchyLevel": 0
+        },
+        "timespent": null,
+        "customfield_10030": null,
+        "project": {
+          "self": "https://recintos.atlassian.net/rest/api/2/project/10042",
+          "id": "10042",
+          "key": "TKT",
+          "name": "Chamados",
+          "projectTypeKey": "service_desk",
+          "simplified": false,
+          "avatarUrls": {
+            "48x48": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414",
+            "24x24": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=small",
+            "16x16": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=xsmall",
+            "32x32": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10414?size=medium"
+          }
+        },
+        "customfield_10033": "Service requests",
+        "customfield_10034": null,
+        "aggregatetimespent": null,
+        "customfield_10035": [],
+        "customfield_10036": null,
+        "customfield_10037": null,
+        "customfield_10027": 0,
+        "customfield_10028": 1,
+        "customfield_10029": 1,
+        "resolutiondate": null,
+        "workratio": -1,
+        "issuerestriction": {
+          "issuerestrictions": {},
+          "shouldDisplay": false
+        },
+        "watches": {
+          "self": "https://recintos.atlassian.net/rest/api/2/issue/TKT-64/watchers",
+          "watchCount": 0,
+          "isWatching": false
+        },
+        "created": "2025-10-23T13:17:43.030-0300",
+        "customfield_10020": null,
+        "customfield_10021": null,
+        "customfield_10022": null,
+        "customfield_10023": null,
+        "customfield_10024": null,
+        "customfield_10025": null,
+        "customfield_10026": 0,
+        "customfield_10016": null,
+        "customfield_10017": null,
+        "customfield_10019": "0|i00af5:",
+        "updated": "2025-10-23T13:17:43.030-0300",
+        "timeoriginalestimate": null,
+        "description": "Estou testando o N8N, porém não estou conseguindo conectar as APIs",
+        "customfield_10010": {
+          "_links": {
+            "jiraRest": "https://recintos.atlassian.net/rest/api/2/issue/21038",
+            "web": "https://recintos.atlassian.net/servicedesk/customer/portal/36/TKT-64",
+            "agent": "https://recintos.atlassian.net/browse/TKT-64",
+            "self": "https://recintos.atlassian.net/rest/servicedeskapi/request/21038"
+          },
+          "requestType": {
+            "_expands": [
+              "field"
+            ],
+            "id": "87",
+            "_links": {
+              "self": "https://recintos.atlassian.net/rest/servicedeskapi/servicedesk/36/requesttype/87"
+            },
+            "name": "TMS",
+            "description": "Relate problemas com emissão de CT-e ou MDF-e, como erros, rejeições ou dificuldades no envio. Descreva o caso e anexe um print da tela para solução rápida",
+            "helpText": "",
+            "defaultName": "TMS",
+            "issueTypeId": "10022",
+            "serviceDeskId": "36",
+            "portalId": "36",
+            "groupIds": [
+              "74"
+            ],
+            "icon": {
+              "id": "10670",
+              "_links": {
+                "iconUrls": {
+                  "48x48": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10670?size=large",
+                  "24x24": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10670?size=small",
+                  "16x16": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10670?size=xsmall",
+                  "32x32": "https://recintos.atlassian.net/rest/api/2/universal_avatar/view/type/SD_REQTYPE/avatar/10670?size=medium"
+                }
+              }
+            }
+          },
+          "currentStatus": {
+            "status": "Aberto para Análise",
+            "statusCategory": "NEW",
+            "statusDate": {
+              "iso8601": "2025-10-23T13:17:43-0300",
+              "jira": "2025-10-23T13:17:43.030-0300",
+              "friendly": "Hoje 1:17 PM",
+              "epochMillis": 1761236263030
+            }
+          }
+        },
+        "customfield_10133": null,
+        "customfield_10014": null,
+        "timetracking": {},
+        "customfield_10015": null,
+        "customfield_10005": null,
+        "customfield_10006": null,
+        "customfield_10007": null,
+        "security": null,
+        "customfield_10008": null,
+        "attachment": [],
+        "customfield_10009": null,
+        "summary": "Teste N8N",
+        "customfield_10001": null,
+        "customfield_10002": [
+          {
+            "id": "34",
+            "uuid": "5cbf6e42-e43b-44e5-8954-993384ef9ffa",
+            "name": "Org Teste",
+            "created": {
+              "iso8601": "2025-08-06T09:20:40-0300",
+              "jira": "2025-08-06T09:20:40.917-0300",
+              "friendly": "06/ago/25 9:20 AM",
+              "epochMillis": 1754482840917
+            },
+            "_links": {
+              "self": "https://recintos.atlassian.net/rest/servicedeskapi/organization/34"
+            },
+            "scimManaged": false
+          }
+        ],
+        "customfield_10003": null,
+        "customfield_10004": null,
+        "environment": null,
+        "duedate": null
+      }
+    },
+    "changelog": {
+      "id": "45258",
+      "items": [
+        {
+          "field": "description",
+          "fieldtype": "jira",
+          "fieldId": "description",
+          "from": null,
+          "fromString": null,
+          "to": null,
+          "toString": "Estou testando o N8N, porém não estou conseguindo conectar as APIs"
+        },
+        {
+          "field": "priority",
+          "fieldtype": "jira",
+          "fieldId": "priority",
+          "from": null,
+          "fromString": null,
+          "to": "3",
+          "toString": "Medium"
+        },
+        {
+          "field": "reporter",
+          "fieldtype": "jira",
+          "fieldId": "reporter",
+          "from": null,
+          "fromString": null,
+          "to": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0",
+          "toString": "Matheus Germano De Souza",
+          "tmpFromAccountId": null,
+          "tmpToAccountId": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0"
+        },
+        {
+          "field": "Status",
+          "fieldtype": "jira",
+          "fieldId": "status",
+          "from": null,
+          "fromString": null,
+          "to": "1",
+          "toString": "Aberto para Análise"
+        },
+        {
+          "field": "summary",
+          "fieldtype": "jira",
+          "fieldId": "summary",
+          "from": null,
+          "fromString": null,
+          "to": null,
+          "toString": "Teste N8N"
+        }
+      ]
+    },
+    "triggeredByUser": "712020:94d48a60-ac81-40d4-b85f-19b4d69c7ec0"
+  }
+]
